@@ -19,7 +19,6 @@ router.register(r"editoras", EditoraViewSet, basename="editoras")
 router.register(r"autores", AutorViewSet, basename="autores")
 
 
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     # OpenAPI 3
