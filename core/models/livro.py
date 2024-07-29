@@ -1,7 +1,7 @@
 from django.db import models
 
-
 from core.models import Autor, Categoria, Editora
+
 
 class Livro(models.Model):
     titulo = models.CharField(max_length=255)
@@ -11,7 +11,6 @@ class Livro(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, related_name="livros", null=False, blank=False)
     editora = models.ForeignKey(Editora, on_delete=models.PROTECT, related_name="livros")
     autor = models.ForeignKey(Autor, on_delete=models.PROTECT, related_name="autores")
-
 
     def __str__(self):
         return f"(id {self.id}) {self.titulo} R${self.preco} | informações adicionais: Categoria: {self.categoria}, Editora: {self.editora}, Autor:{self.autor}, (Qnt:{self.quantidade})|"
