@@ -13,4 +13,6 @@ class Livro(models.Model):
     autor = models.ManyToManyField(Autor, related_name="livros")
 
     def __str__(self):
-        return f"(id {self.id}) {self.titulo} R${self.preco} | informações adicionais: Categoria: {self.categoria}, Editora: {self.editora}, Autores:{self.autor} (Qnt:{self.quantidade})|"
+        return f"(id {self.id}) {self.titulo} R${self.preco} | informações adicionais: Categoria: {self.categoria}, Editora: {self.editora},"
+
+    # Autores:{self.autor} (Qnt:{self.quantidade})|"
