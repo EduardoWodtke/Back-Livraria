@@ -7,7 +7,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
 # from core import models
-from core.models import Autor, Categoria, Compra, ItensCompra, Editora, Livro, User
+from core.models import Autor, Categoria, Compra, Editora, ItensCompra, Livro, User
 
 
 @admin.register(User)
@@ -86,9 +86,10 @@ class LivroAdmin(admin.ModelAdmin):
     ordering = ("titulo", "editora", "categoria")
     list_per_page = 10
 
+
 class ItensCompraInline(admin.TabularInline):
     model = ItensCompra
-    extra = 1 # Quantidade de itens adicionais
+    extra = 1  # Quantidade de itens adicionais
 
 
 @admin.register(Compra)
