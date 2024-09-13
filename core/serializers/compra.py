@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework.serializers import CharField, ModelSerializer
 
-from core.models import Compra
+from core.models import Compra, ItensCompra
 
 class CompraSerializer(ModelSerializer):
     usuario = CharField(source="usuario.email", read_only=True)
@@ -9,3 +9,9 @@ class CompraSerializer(ModelSerializer):
     class Meta:
         model = Compra
         fields = "__all__"
+
+class ItensCompraSerializer(ModelSerializer):
+    class Meta:
+        model = ItensCompra
+        fields = ("livro", "quantidade")
+        depth = 1
