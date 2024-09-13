@@ -14,10 +14,10 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from core.views import (
     AutorViewSet,
     CategoriaViewSet,
+    CompraViewSet,
     EditoraViewSet,
     LivroViewSet,
     UserViewSet,
-    CompraViewSet,
 )
 from uploader.router import router as uploader_router
 
