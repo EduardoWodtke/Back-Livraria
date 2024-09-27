@@ -11,13 +11,15 @@ from django.db import models
 
 from uploader.models import Image
 
+from .categoria import Categoria
+
 
 class UserManager(BaseUserManager):
     """Manager for users."""
 
     use_in_migrations = True
 
-    def create_user(self, email, password=None, **extra_fields):    
+    def create_user(self, email, password=None, **extra_fields):
         """Create, save and return a new user."""
         if not email:
             raise ValueError("Users must have an email address.")
@@ -43,8 +45,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
-    is_active = models.BooleanField(default=True)
+    passage_id = models.CharField(max_length=255, unique=True)
     is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     foto = models.ForeignKey(
         Image,
         on_delete=models.SET_NULL,
@@ -52,10 +55,14 @@ class User(AbstractBaseUser, PermissionsMixin):
         blank=True,
         default=None,
     )
-    passage_id = models.CharField(max_length=255, unique=True)
-
 
     objects = UserManager()
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
+
+    class Meta:
+        """Meta options for the model."""
+
+        verbose_name = "Usuário"
+        verbose_name_plural = "Usuários"
