@@ -15,7 +15,9 @@ from uploader.models import Image
 class UserManager(BaseUserManager):
     """Manager for users."""
 
-    def create_user(self, email, password=None, **extra_fields):
+    use_in_migrations = True
+
+    def create_user(self, email, password=None, **extra_fields):    
         """Create, save and return a new user."""
         if not email:
             raise ValueError("Users must have an email address.")
@@ -50,7 +52,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         blank=True,
         default=None,
     )
+    passage_id = models.CharField(max_length=255, unique=True)
+
 
     objects = UserManager()
 
     USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
